@@ -5,7 +5,9 @@ let movieList;
 
 class CustomButton extends LitElement {
   static properties = {
-    isChristmas: { type: String }
+    isChristmas: { type: Boolean },
+    brunchMovies: { type: Array },
+    christmasMovies: { type: Array }
   }
 
   static styles = css`
@@ -21,7 +23,7 @@ class CustomButton extends LitElement {
       flex-direction: column;
       margin-left: 15px;
       align-items: center;
-      
+
       label {
         color: white;
       }
@@ -51,13 +53,15 @@ class CustomButton extends LitElement {
 
   constructor () {
     super();
-    this.isChristmas = 'false';
+    this.isChristmas = false;
+    this.christmasMovies = christmasMovies;
+    this.brunchMovies = brunchMovies;
   }
 
   render() {
     return html`
       <div class="wrapper">
-        <button @click="${this.handleClick}">${this.isChristmas === 'true' ? 'Shake Santas Bag!' : 'Brunch Movies!'}</button>
+        <button @click="${this.handleClick}">${this.isChristmas === true ? 'Shake Santas Bag!' : 'Brunch Movies!'}</button>
         <div class="checkbox">
           <label for='check'>Holiday Vibe</label>
           <input type="checkbox" name='check' @change="${this.handleCheckboxChange}" />
@@ -67,22 +71,22 @@ class CustomButton extends LitElement {
   }
 
   handleClick() {
-    if (this.isChristmas === 'false') {
-      const generatedValue = buttonGenerator(brunchMovies).title;
-  
+    if (this.isChristmas === false) {
+      const generatedValue = this.buttonGenerator(this.brunchMovies, this.isChristmas = false).title;
+
       this.dispatchEvent(
         new CustomEvent('send-value', {
-          detail: { value: buttonGenerator(brunchMovies).title },
+          detail: { value: generatedValue },
           bubbles: true,
           composed: true,
         })
       );
     } else {
-      const generatedValue = buttonGenerator(christmasMovies).title;
-  
+      const generatedValue = this.buttonGenerator(this.christmasMovies, this.isChristmas = true).title;
+
       this.dispatchEvent(
         new CustomEvent('send-value', {
-          detail: { value: buttonGenerator(christmasMovies).title },
+          detail: { value: generatedValue },
           bubbles: true,
           composed: true,
         })
@@ -91,7 +95,7 @@ class CustomButton extends LitElement {
   }
 
   handleCheckboxChange(event) {
-    this.isChristmas = event.target.checked ? 'true' : 'false';
+    this.isChristmas = event.target.checked ? true : false;
     this.dispatchEvent(
       new CustomEvent('checkbox-update', {
         detail: { value: this.isChristmas },
@@ -101,20 +105,23 @@ class CustomButton extends LitElement {
     )
     this.requestUpdate(); // Trigger a re-render to reflect the change
   }
+  
+  buttonGenerator = (movies, isChristmas) => {
+      movieList = shuffle(movies)
+      let movieTitle = ''
+      const selectAMovie = Math.floor(Math.random() * movieList.length)
+      movieList = movies.filter(value => {
+          movieTitle = movieList[selectAMovie]
+          return movieTitle !== value
+      })
+  
+      isChristmas ? this.christmasMovies = movieList : this.brunchMovies = movieList;
+      
+      return { title: movieTitle || 'No More Movies!' }
+  }
 }
 
-customElements.define('custom-button', CustomButton);
 
-const buttonGenerator = (movies) => {
-    movieList = shuffle(movies)
-    let movieTitle = ''
-    const selectAMovie = Math.floor(Math.random() * movieList.length)
-    movieList = movieList.filter(value => {
-        movieTitle = movieList[selectAMovie]
-        return movieTitle !== value
-    })
-    return { title: movieTitle, movieList }
-}
 
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -133,3 +140,5 @@ function shuffle(array) {
   
     return array;
   }
+
+customElements.define('custom-button', CustomButton);
