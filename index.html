@@ -3,7 +3,7 @@
     <head>
       <meta charset="UTF-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
       <link rel="manifest" href="./manifest.json">
       <title>Movie Picker!</title>
       <link rel="stylesheet" href="./src/styles/style.css">
@@ -12,14 +12,13 @@
       <script type="module" src="./src/scripts/custom-elements/customResults.js" defer></script>
       <script type="module" src="./src/scripts/custom-elements/customHeader.js" defer></script> 
       <script type="module" src="./src/scripts/custom-elements/customLights.js" defer></script> 
+      <script type="module" src="./src/scripts/custom-elements/customPrecip.js" defer></script> 
     </head>
     <body>
-        <!-- <div class="lights-container" id="lights-container"></div> -->
+        <custom-precip></custom-precip>
         <custom-lights></custom-lights>
-        <!-- <div class="snowfall" id="snowfall"></div> -->
-             <!-- Add a theme toggle button -->
         <header>
-                <custom-header></custom-header>
+            <custom-header></custom-header>
         </header>
         <main>
             <section>
@@ -29,7 +28,6 @@
                 <custom-button></custom-button>
             </section>
         </main>
-        <script type="module" src="./src/scripts/app.js" defer></script>
     </body>
 </html>
 

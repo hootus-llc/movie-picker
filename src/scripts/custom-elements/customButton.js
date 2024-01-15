@@ -63,7 +63,7 @@ class CustomButton extends LitElement {
       <div class="wrapper">
         <button @click="${this.handleClick}">${this.isChristmas === true ? 'Shake Santas Bag!' : 'Brunch Movies!'}</button>
         <div class="checkbox">
-          <label for='check'>Holiday Vibe</label>
+          <label style="color: white;" for='check'>Christmas Vibe</label>
           <input type="checkbox" name='check' @change="${this.handleCheckboxChange}" />
         </div>
       </div>
@@ -120,8 +120,6 @@ class CustomButton extends LitElement {
       return { title: movieTitle || 'No More Movies!' }
   }
 }
-
-
 
 function shuffle(array) {
     let currentIndex = array.length,  randomIndex;

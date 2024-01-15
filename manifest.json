@@ -2,7 +2,7 @@
     "name": "Brunch Movie Picker",
     "short_name": "Movie Picker",
     "description": "Find your brunch movie here!",
-    "start_url": "./src/index.html",
+    "start_url": "./index.html",
     "display": "standalone",
     "orientation": "portrait",
     "background_color": "#ffffff",
