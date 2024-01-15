@@ -45,6 +45,7 @@ constructor() {
   firstUpdated() {
     this.generateLights();
     window.addEventListener('resize', this.handleResize);
+    window.addEventListener('orientationchange', this.handleResize);
   }
 
   handleResize = () => {
