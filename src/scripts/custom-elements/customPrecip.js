@@ -31,7 +31,7 @@ class PrecipElement extends LitElement {
   `;
 
   render() {
-    const numStreams = 300;
+    const numStreams = 200;
     return html`
       ${Array.from({ length: numStreams }, (_, index) => {
         const delay = Math.random() * 5 + 's'; // Varying delays
@@ -47,7 +47,7 @@ class PrecipElement extends LitElement {
   }
 
   generateRandomCharacters(length) {
-    const characters = '*';
+    const characters = '#';
     return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
   }
 }
