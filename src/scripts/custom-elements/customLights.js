@@ -23,15 +23,6 @@ class CustomLights extends LitElement {
         animation: flicker 1s infinite;
     }
     
-    @keyframes flicker {
-        0%, 100% {
-        opacity: 1;
-        }
-        50% {
-        opacity: 0.5;
-        }
-    }
-    
     .light.synchronize {
         animation: synchronize 5s linear infinite, flicker 1s infinite;
     }
@@ -100,7 +91,7 @@ constructor() {
     return html`
         <div class="light synchronize" style=${this.getLightStyles(top, left, color, delay)}></div>
     `;
-}
+  }
 
 
   getLightStyles(top, left, color, delay) {
@@ -120,31 +111,46 @@ constructor() {
   }
 
   generateLights() {
+    const lightsContainer = this.shadowRoot.getElementById('lights-container');
+    lightsContainer.innerHTML = ''; // Clear existing lights
+
     const numLights = 60;
 
     // Top border
     for (let i = 0; i < numLights; i++) {
       const delay = Math.random() * 4; // Random delay up to 4 seconds
-      this.createLightHtml(0, (i / numLights) * window.innerWidth, this.getRandomColor(), delay);
+      lightsContainer.appendChild(this.createLightElement(0, (i / numLights) * window.innerWidth, this.getRandomColor(), delay));
     }
 
     // Bottom border
     for (let i = 0; i < numLights; i++) {
       const delay = Math.random() * 4; // Random delay up to 4 seconds
-      this.createLightHtml(window.innerHeight - 12, (i / numLights) * window.innerWidth, this.getRandomColor(), delay);
+      lightsContainer.appendChild(this.createLightElement(window.innerHeight - 12, (i / numLights) * window.innerWidth, this.getRandomColor(), delay));
     }
 
     // Left border
     for (let i = 0; i < numLights; i++) {
       const delay = Math.random() * 4; // Random delay up to 4 seconds
-      this.createLightHtml((i / numLights) * window.innerHeight, 0, this.getRandomColor(), delay);
+      lightsContainer.appendChild(this.createLightElement((i / numLights) * window.innerHeight, 0, this.getRandomColor(), delay));
     }
 
     // Right border
     for (let i = 0; i < numLights; i++) {
       const delay = Math.random() * 4; // Random delay up to 4 seconds
-      this.createLightHtml((i / numLights) * window.innerHeight, window.innerWidth - 12, this.getRandomColor(), delay);
+      lightsContainer.appendChild(this.createLightElement((i / numLights) * window.innerHeight, window.innerWidth - 12, this.getRandomColor(), delay));
     }
+  }
+
+  createLightElement(top, left, color, delay) {
+    const light = document.createElement('div');
+    light.classList.add('light', 'synchronize');
+    light.style.cssText = `
+      top: ${top}px;
+      left: ${left}px;
+      background-color: ${color};
+      animation-delay: ${delay}s;
+    `;
+    return light;
   }
   
 }

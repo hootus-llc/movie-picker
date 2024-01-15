@@ -1,5 +1,6 @@
 export const brunchMovies = [
     'The Wrong Missy',
+    'Grandmas Boy',
     'Meet the Parents',
     'Meet the Fockers',
     'Little Fockers',
