@@ -48,7 +48,7 @@ class CustomResults extends LitElement {
         }
 
         .movie-details {
-            padding: 1rem; /* Reduce padding */
+            padding: .75rem; /* Reduce padding */
             align-content: center;
             justify-content: space-between;
             display: flex;
