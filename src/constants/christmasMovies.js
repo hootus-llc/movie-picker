@@ -2,7 +2,7 @@ export const christmasMovies = [
     'Deck The Halls',
     'Thanksgiving (Prime)',
     'Friendsgiving',
-    'Christmas Story',
+    'A Christmas Story',
     'The Santa Clause',
     'Christmas Vacation',
     'Eight Crazy Nights', 
