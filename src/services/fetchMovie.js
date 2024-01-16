@@ -1,5 +1,5 @@
 export async function fetchData(movieTitle) {
-    const url = `http://www.omdbapi.com/?t=${movieTitle}&apikey=cb64a76e`;
+    const url = `https://www.omdbapi.com/?t=${movieTitle}&apikey=cb64a76e`;
     
     // Basic Fetch
     fetch(url)
