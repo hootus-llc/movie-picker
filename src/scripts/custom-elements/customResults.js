@@ -56,16 +56,22 @@ class CustomResults extends LitElement {
 
         .movie-major-details {
             display: flex;
-            justify-content: flex-start;
-            flex-direction: row;
+            align-items: flex-start;
+            flex-direction: column;
 
             h1 {
                 margin: 4px;
             }
         }
 
+        .movie-small-details {
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
         h1 {
-            margin: 0;
             font-size: 0.8rem; /* Reduce font size */
             color: #f7f7f7;
         }
