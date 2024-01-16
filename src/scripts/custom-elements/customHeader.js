@@ -51,7 +51,7 @@ class CustomHeader extends LitElement {
         </h1>
     </div>
       <div class="checkbox">
-        <label for="check">Christmas Vibe</label>
+        <label for="check" style="color: #f7f7f7;">Christmas Vibe</label>
         <input type="checkbox" name="check" @change="${this.handleCheckboxChange}" />
       </div>
     `;
