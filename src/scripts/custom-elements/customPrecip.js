@@ -5,7 +5,7 @@ class PrecipElement extends LitElement {
     :host {
       display: block;
       position: fixed;
-      top: 0;
+      top: 40;
       left: 0;
       width: 100%;
       height: 100%;
@@ -47,7 +47,7 @@ class PrecipElement extends LitElement {
   }
 
   generateRandomCharacters(length) {
-    const characters = '#';
+    const characters = '*';
     return Array.from({ length }, () => characters.charAt(Math.floor(Math.random() * characters.length))).join('');
   }
 }

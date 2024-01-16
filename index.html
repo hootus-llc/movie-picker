@@ -1,32 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-      <link rel="manifest" href="./manifest.json">
-      <title>Movie Picker!</title>
-      <link rel="stylesheet" href="./src/styles/style.css">
-      <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
-      <script type="module" src="./src/scripts/custom-elements/customButton.js" defer></script>
-      <script type="module" src="./src/scripts/custom-elements/customResults.js" defer></script>
-      <script type="module" src="./src/scripts/custom-elements/customHeader.js" defer></script> 
-      <script type="module" src="./src/scripts/custom-elements/customLights.js" defer></script> 
-      <script type="module" src="./src/scripts/custom-elements/customPrecip.js" defer></script> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="manifest" href="./manifest.json">
+        <title>Movie Picker!</title>
+        <link rel="stylesheet" href="./src/styles/style.css">
+        <script type="module" src="./src/scripts/app.js" defer></script>
     </head>
     <body>
+        <custom-toolbar></custom-toolbar>
         <custom-precip></custom-precip>
         <custom-lights></custom-lights>
         <header>
             <custom-header></custom-header>
         </header>
         <main>
-            <section>
-                <custom-results></custom-results>
-            </section>
-            <section>
-                <custom-button></custom-button>
-            </section>
+            <div class="random-generator">
+                <section>
+                    <custom-button></custom-button>
+                </section>
+                <section>
+                    <custom-results></custom-results>
+                </section>
+            </div>
+            <div class="movie-list">
+                <custom-list></custom-list>
+            </div>
         </main>
     </body>
 </html>

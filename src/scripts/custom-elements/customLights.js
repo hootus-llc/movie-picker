@@ -76,7 +76,7 @@ constructor() {
         left = (index / (numLights / 4)) * window.innerWidth;
     } else if (index < numLights / 2) {
         // Bottom border
-        top = window.innerHeight - 12;
+        top = window.innerHeight - 102;
         left = ((index - numLights / 4) / (numLights / 4)) * window.innerWidth;
     } else if (index < (3 * numLights) / 4) {
         // Left border
@@ -120,7 +120,7 @@ constructor() {
     // Top border
     for (let i = 0; i < numLights; i++) {
       const delay = Math.random() * 4; // Random delay up to 4 seconds
-      lightsContainer.appendChild(this.createLightElement(0, (i / numLights) * window.innerWidth, this.getRandomColor(), delay));
+      lightsContainer.appendChild(this.createLightElement(55, (i / numLights) * window.innerWidth, this.getRandomColor(), delay));
     }
 
     // Bottom border
@@ -132,13 +132,13 @@ constructor() {
     // Left border
     for (let i = 0; i < numLights; i++) {
       const delay = Math.random() * 4; // Random delay up to 4 seconds
-      lightsContainer.appendChild(this.createLightElement((i / numLights) * window.innerHeight, 0, this.getRandomColor(), delay));
+      lightsContainer.appendChild(this.createLightElement(((i / numLights) * window.innerHeight) + 55, 0, this.getRandomColor(), delay));
     }
 
     // Right border
     for (let i = 0; i < numLights; i++) {
       const delay = Math.random() * 4; // Random delay up to 4 seconds
-      lightsContainer.appendChild(this.createLightElement((i / numLights) * window.innerHeight, window.innerWidth - 12, this.getRandomColor(), delay));
+      lightsContainer.appendChild(this.createLightElement(((i / numLights) * window.innerHeight) + 55, window.innerWidth - 12, this.getRandomColor(), delay));
     }
   }
 

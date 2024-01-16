@@ -13,20 +13,10 @@ class CustomButton extends LitElement {
   static styles = css`
     .wrapper {
       display: flex;
+      margin: 1rem 0;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-    }
-
-    .checkbox {
-      display: flex;
-      flex-direction: column;
-      margin-left: 15px;
-      align-items: center;
-
-      label {
-        color: white;
-      }
     }
 
     button {
@@ -45,10 +35,6 @@ class CustomButton extends LitElement {
       background-color: #ff666669;
     }
 
-    input {
-      height: 25px;
-      width: 25px;
-    }
   `;
 
   constructor () {
@@ -58,20 +44,33 @@ class CustomButton extends LitElement {
     this.brunchMovies = brunchMovies;
   }
 
+  
+  connectedCallback() {
+    super.connectedCallback();
+    // Listen for the custom event
+    window.addEventListener('checkbox-update', (event) => {
+        this.isChristmas = event.detail.value;
+        this.requestUpdate();
+    })
+  }
+
+  disconnectedCallback() {
+      super.disconnectedCallback();
+
+      // Remove the event listener when the element is disconnected
+      this.removeEventListener('checkbox-update');
+  }
+
   render() {
     return html`
       <div class="wrapper">
-        <button @click="${this.handleClick}">${this.isChristmas === true ? 'Shake Santas Bag!' : 'Brunch Movies!'}</button>
-        <div class="checkbox">
-          <label style="color: white;" for='check'>Christmas Vibe</label>
-          <input type="checkbox" name='check' @change="${this.handleCheckboxChange}" />
-        </div>
+        <button @click="${this.handleClick}">${this.isChristmas === true || this.isChristmas === 'true' ? 'Shake Santas Bag!' : 'Brunch Movies!'}</button>
       </div>
     `;
   }
 
   handleClick() {
-    if (this.isChristmas === false) {
+    if (this.isChristmas === false || this.isChristmas === 'false') {
       const generatedValue = this.buttonGenerator(this.brunchMovies, this.isChristmas = false).title;
 
       this.dispatchEvent(
@@ -92,18 +91,6 @@ class CustomButton extends LitElement {
         })
       );
     }
-  }
-
-  handleCheckboxChange(event) {
-    this.isChristmas = event.target.checked ? true : false;
-    this.dispatchEvent(
-      new CustomEvent('checkbox-update', {
-        detail: { value: this.isChristmas },
-        bubbles: true,
-        composed: true
-      })
-    )
-    this.requestUpdate(); // Trigger a re-render to reflect the change
   }
   
   buttonGenerator = (movies, isChristmas) => {
