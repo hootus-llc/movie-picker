@@ -128,28 +128,33 @@ class CustomList extends LitElement {
   }
 
   render() {
-    return html`
-      <div class="container">
-        ${this.movies.map(
-            (movie) => 
-            html`
-            <div class="movie-card">
-                ${movie && movie.Poster && html`<img src="${movie.Poster}" alt="${movie.Title}" />`}
-                <div class="movie-details">
-                        <div class="movie-major-details">
-                            <h1>${movie.Title}</h1>
-                            <h1>${movie.Rated}</h1>
-                        </div>
-                        <div class="movie-small-details">
-                            ${movie.Year && html`<h2>${movie.Year}</h2>`}
-                            ${movie.Runtime && html`<h2>${movie.Runtime}</h2>`}
-                        </div>
+    if (this.movies.length > 0) {
+
+        return html`
+        <div class="container">
+            ${this.movies.map(
+                (movie) => 
+                html`
+                <div class="movie-card">
+                    ${movie && movie.Poster && html`<img src="${movie.Poster}" alt="${movie.Title}" />`}
+                    <div class="movie-details">
+                            <div class="movie-major-details">
+                                <h1>${movie.Title}</h1>
+                                <h1>${movie.Rated}</h1>
+                            </div>
+                            <div class="movie-small-details">
+                                ${movie.Year && html`<h2>${movie.Year}</h2>`}
+                                ${movie.Runtime && html`<h2>${movie.Runtime}</h2>`}
+                            </div>
+                    </div>
                 </div>
-            </div>
-            `
-        )}
-      </div>
-    `;
+                `
+            )}
+        </div>
+        `;
+    } else {
+        this.getMovieData(this.isChristmas)
+    }
   }
 
   async getMovieData(isChristmas) {
