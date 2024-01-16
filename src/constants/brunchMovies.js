@@ -33,7 +33,7 @@ export const brunchMovies = [
     'The Big Lebowski',
     'Couples Retreat',
     'The Proposal',
-    'The Duplex',
+    'Duplex',
     'The Big Short',
     'Waiting...',
     'Identity Thief',

@@ -106,16 +106,17 @@ class CustomList extends LitElement {
   constructor() {
     super();
     this.isChristmas = false;
-    this.getMovieData(this.isChristmas);
     this.movies = [];
+    this.getMovieData(this.isChristmas);
   }
 
   connectedCallback() {
     super.connectedCallback();
+    this.getMovieData(this.isChristmas)
 
     window.addEventListener('checkbox-update', async (event) => {
       this.isChristmas = event.detail.value;
-      await this.getMovieData(this.isChristmas);
+      this.getMovieData(this.isChristmas);
       this.requestUpdate();
     });
   }
@@ -128,8 +129,7 @@ class CustomList extends LitElement {
   }
 
   render() {
-    if (this.movies.length > 0) {
-
+    if (this.movies.length > 0 && this.movies[0] !== undefined) {
         return html`
         <div class="container">
             ${this.movies.map(
@@ -152,8 +152,6 @@ class CustomList extends LitElement {
             )}
         </div>
         `;
-    } else {
-        this.getMovieData(this.isChristmas)
     }
   }
 

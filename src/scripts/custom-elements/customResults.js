@@ -48,39 +48,40 @@ class CustomResults extends LitElement {
         }
 
         .movie-details {
-            padding: .75rem; /* Reduce padding */
-            align-content: center;
-            justify-content: space-between;
-            display: flex;
-        }
+        padding: 1rem; /* Reduce padding */
+        align-content: center;
+        justify-content: space-between;
+        display: flex;
+    }
 
-        .movie-major-details {
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-
-            h1 {
-                margin: 4px;
-            }
-        }
-
-        .movie-small-details {
-            display: flex;
-            align-items: flex-end;
-            flex-direction: column;
-            justify-content: space-around;
-        }
+    .movie-major-details {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
 
         h1 {
-            font-size: 1rem; /* Reduce font size */
-            color: #f7f7f7;
+            margin: 4px;
         }
+    }
 
-        h2 {
-            margin: 0;
-            font-size: 0.9rem; /* Reduce font size */
-            color: #f7f7f7;
-        }
+    .movie-small-details {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 1rem;
+        color: #f7f7f7;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #f7f7f7;
+    }
         @media (max-width: 768px) {
            .movie-card {
                 width: calc(50% - 1rem);
