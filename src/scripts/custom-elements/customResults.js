@@ -72,13 +72,13 @@ class CustomResults extends LitElement {
         }
 
         h1 {
-            font-size: 0.8rem; /* Reduce font size */
+            font-size: 1rem; /* Reduce font size */
             color: #f7f7f7;
         }
 
         h2 {
             margin: 0;
-            font-size: 0.7rem; /* Reduce font size */
+            font-size: 0.9rem; /* Reduce font size */
             color: #f7f7f7;
         }
         @media (max-width: 768px) {

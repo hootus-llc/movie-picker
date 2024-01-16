@@ -24,14 +24,14 @@ class CustomHeader extends LitElement {
       margin: 8px;
 
       label {
-        margin-right: 8px;
+        margin-right: 16px;
         font-size: 1rem;
         color: #f7f7f7;
       }
 
       input {
-        height: 20px;
-        width: 20px;
+        height: 22px;
+        width: 22px;
       }
     }
   `;
